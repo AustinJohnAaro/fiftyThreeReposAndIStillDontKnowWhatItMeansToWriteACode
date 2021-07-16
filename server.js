@@ -116,11 +116,14 @@ module.exports = db;
   app.listen(PORT, () => console.log('Now listening'));
   console.log("Calling app.listen().");
 
-var server = app.listen(3000, function (){
+var server = app.listen( function (){
   console.log("Calling app.listen's callback function.");
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);
+  app.listen(process.env.PORT || 3001, () => {
+    console.log('Server is running on port: 5000 ');
+    });
 });
 
 console.log("app.listen() executed."); 
